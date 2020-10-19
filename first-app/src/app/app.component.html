@@ -1,0 +1,8 @@
+<h1>Migdal App</h1>
+<app-string-list 
+[selectedItem]="selectedName"
+title="Student names" [values]="names"
+(selectedItemChangedRequested)="onSelectedItemChangedRequested($event)"
+></app-string-list>
+
+<h2 *ngIf="selectedName">Selected Name : {{selectedName}}</h2>

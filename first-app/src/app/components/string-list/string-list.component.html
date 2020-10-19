@@ -1,0 +1,8 @@
+<div>
+    <h2 *ngIf=title>{{title}}</h2>
+    <div class="string-item" *ngFor="let item of values" 
+        [class.selected]="item === selectedItem"
+    (click)="selectItem(item)">
+            {{item}}
+    </div>
+</div>
