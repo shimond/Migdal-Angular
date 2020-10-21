@@ -1,0 +1,17 @@
+<div class="users-wrapper">
+    <div class="user-item" *ngFor="let item of users">
+        <h2>{{item.firstName}} {{item.lastName}}</h2>
+        <div>
+            {{item.email}}
+        </div>
+        <div>
+            {{item.username}}
+        </div>
+        <div class="actions">
+            <div>
+                <button (click)="deleteUser(item.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+</div>

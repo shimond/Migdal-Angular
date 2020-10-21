@@ -1,0 +1,13 @@
+.users-wrapper {
+
+    display: flex;
+
+    .user-item {
+        margin: 20px;
+         padding: 10px;
+        height: 180px;
+        width: 180px;
+        border: 2px solid black;
+        border-radius: 9px;
+    }
+}
