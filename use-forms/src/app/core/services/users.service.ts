@@ -11,7 +11,7 @@ export class UsersService {
     return null;
   }
 
-  getUserById(id: number) {
+  getUserById(id: number): Observable<UserModel> {
     return null;
   }
 

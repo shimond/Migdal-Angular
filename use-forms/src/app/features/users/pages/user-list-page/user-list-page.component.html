@@ -11,6 +11,11 @@
             <div>
                 <button (click)="deleteUser(item.id)">Delete</button>
             </div>
+            <div>
+                <!-- <a routerLink="/users/edit/{{item.id}}">Edit</a> -->
+                <a [routerLink]="['/users','edit',item.id]">Edit</a>
+            
+            </div>
         </div>
     </div>
 

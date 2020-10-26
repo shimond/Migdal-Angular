@@ -10,12 +10,11 @@ export class MockUsersService {
   baseUrl = `${environment.serverUrl}/users`;
 
   getAllUsers(): Observable<UserModel[]> {
-    // const s = new EventEmitter<UserModel[]>(); // hot
     return this.httpClient.get<UserModel[]>(this.baseUrl); // cold
   }
 
-  getUserById(id: number) {
-
+  getUserById(id: number): Observable<UserModel> {
+    return this.httpClient.get<UserModel>(`${this.baseUrl}/${id}`);
   }
 
   updateUser(u: UserModel) {

@@ -1,0 +1,14 @@
+<pre>{{user| json}}</pre>
+
+<input type="text" [formControl]="searchControl" />
+<button (click)="changeMode()"> DO</button>
+
+<div>
+    <div>Enabled : {{searchControl.enabled}}</div>
+    <div>dirty : {{searchControl.dirty}}</div>
+    <div>touched : {{searchControl.touched}}</div>
+    <div>value : {{searchControl.value}}</div>
+    <div>valid : {{searchControl.valid}}</div>
+    <div>error : {{searchControl.errors | json}}</div>
+
+</div>
