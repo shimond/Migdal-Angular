@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { UserModel } from 'src/app/models/user.model';
@@ -13,12 +13,19 @@ export class EditUserPageComponent implements OnInit {
 
   user$: Observable<UserModel>;
 
-  constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.user$ = this.activatedRoute.params.pipe(
       switchMap(p => this.usersService.getUserById(+p.idOfUser)));
 
+  }
+
+  async askToSave(user: UserModel): Promise<void> {
+    await this.usersService.updateUser(user);
+    this.router.navigate(['/users', 'list']);
   }
 
 }

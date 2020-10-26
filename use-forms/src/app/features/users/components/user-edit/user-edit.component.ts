@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
-import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { filter, debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -10,24 +10,32 @@ import { filter, debounceTime } from 'rxjs/operators';
 })
 export class UserEditComponent implements OnInit {
 
+  @Output() askToSave = new EventEmitter<UserModel>();
   @Input() user: UserModel;
-  searchControl: FormControl;
-
+  userForm: FormGroup;
+  firstNameControl: FormControl;
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.searchControl = this.formBuilder.control('1234', [Validators.maxLength(10), Validators.required, Validators.email]);
-    this.searchControl.valueChanges
-      .pipe(filter(x => x.length > 3),
-        debounceTime(300))
-      .subscribe(x => console.log(x));
+    this.userForm = this.formBuilder.group({
+      id: [this.user.id],
+      userStatus: [this.user.userStatus],
+      username: [this.user.username, [Validators.required]],
+      firstName: [this.user.firstName, [Validators.required]],
+      lastName: [this.user.lastName, [Validators.required]],
+      email: [this.user.email, [Validators.email]],
+      address: this.formBuilder.group({
+        city: [this.user.address.city],
+        street: [this.user.address.street]
+      })
+    }, { validators: [], updateOn: 'change' });
+
+    this.firstNameControl = this.userForm.controls.firstName as FormControl;
   }
 
-  changeMode() {
-    if (this.searchControl.disabled) {
-      this.searchControl.enable();
-    } else {
-      this.searchControl.disable();
+  onSave(): void {
+    if (this.userForm.valid) {
+      this.askToSave.emit(this.userForm.value);
     }
   }
 

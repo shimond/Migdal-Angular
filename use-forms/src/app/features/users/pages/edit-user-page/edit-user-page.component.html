@@ -1,1 +1,3 @@
-<app-user-edit [user]="user$ | async"></app-user-edit>
+<ng-container *ngIf="user$ | async as user">
+    <app-user-edit [user]="user" (askToSave)="askToSave($event)"></app-user-edit>
+</ng-container>

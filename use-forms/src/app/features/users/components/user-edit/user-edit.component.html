@@ -1,14 +1,47 @@
 <pre>{{user| json}}</pre>
 
-<input type="text" [formControl]="searchControl" />
-<button (click)="changeMode()"> DO</button>
+<form [formGroup]="userForm" (ngSubmit)="onSave()">
+    <div>
+        <input type="text" formControlName="firstName" />
+    </div>
+    <div>
+        <input type="text" formControlName="lastName" />
+    </div>
+    <div>
+        <input type="text" formControlName="email" />
+    </div>
+    
+    <div>
+        <app-user-status-selector formControlName="userStatus"></app-user-status-selector>
+    </div>
+    <div>
+        <input type="text" formControlName="username" />
+    </div>
+    <div [formGroup]="userForm.get('address')">
+        <div><input formControlName="city"></div>
+        <div><input formControlName="street"></div>
+    </div>
 
-<div>
-    <div>Enabled : {{searchControl.enabled}}</div>
-    <div>dirty : {{searchControl.dirty}}</div>
-    <div>touched : {{searchControl.touched}}</div>
-    <div>value : {{searchControl.value}}</div>
-    <div>valid : {{searchControl.valid}}</div>
-    <div>error : {{searchControl.errors | json}}</div>
+    <div>
+        <button [disabled]="userForm.invalid">Save</button>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Object</th>
+                <th>Form value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+                <pre>{{user| json}}</pre>
+            </td>
+            <td>
+                <pre>{{userForm.value| json}}</pre>
+            </td>
 
-</div>
+        </tbody>
+    </table>
+
+
+</form>

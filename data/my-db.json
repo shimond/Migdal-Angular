@@ -6,23 +6,35 @@
       "firstName": "Naama",
       "lastName": "Dahan",
       "email": "naamadahan@gmail.com",
-      "userStatus": 3
+      "userStatus": 3,
+      "address": {
+        "city": "Jerusalem",
+        "street": "Hamodia"
+      }
     },
     {
       "id": 2,
+      "userStatus": "3",
       "username": "ShimonD",
       "firstName": "Shimon",
-      "lastName": "Dahan",
+      "lastName": "tttt",
       "email": "shimondahan1@gmail.com",
-      "userStatus": 1
+      "address": {
+        "city": "Jerusalecxvxcvm",
+        "street": "Hamodia"
+      }
     },
     {
       "id": 3,
-      "username": "MosheCohen",
-      "firstName": "Moshe",
-      "lastName": "Cohen",
-      "email": "moshe@gmail.com",
-      "userStatus": 2
+      "userStatus": "4",
+      "username": "DAVidlevi",
+      "firstName": "David",
+      "lastName": "Levi",
+      "email": "adasd@asd.com",
+      "address": {
+        "city": "Jerusalem",
+        "street": "Hamodia"
+      }
     }
   ]
 }

@@ -17,8 +17,8 @@ export class MockUsersService {
     return this.httpClient.get<UserModel>(`${this.baseUrl}/${id}`);
   }
 
-  updateUser(u: UserModel) {
-
+  updateUser(u: UserModel): Promise<UserModel> {
+    return this.httpClient.put<UserModel>(`${this.baseUrl}/${u.id}`, u).toPromise();
   }
 
   addNewUser(u: UserModel) {

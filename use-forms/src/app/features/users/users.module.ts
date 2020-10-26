@@ -7,10 +7,11 @@ import { UserListPageComponent } from './pages/user-list-page/user-list-page.com
 import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserStatusSelectorComponent } from './components/user-status-selector/user-status-selector.component';
 
 
 @NgModule({
-  declarations: [UsersComponent, UserListPageComponent, EditUserPageComponent, UserEditComponent],
+  declarations: [UsersComponent, UserListPageComponent, EditUserPageComponent, UserEditComponent, UserStatusSelectorComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
