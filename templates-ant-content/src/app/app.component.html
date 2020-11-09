@@ -1,14 +1,66 @@
-<h2>My App</h2>
+<ng-template [appUnless]="isShown">
+  <div>appUnless Content</div>
+</ng-template>
+
+<div *appUnless="isShown">appUnless Content WITH *</div>
+
+<button (click)="showHideTemplate()">Show/Hide</button>
+
+
+
+<ng-template #myEmptyTemplate>
+  <div>0 Records :(</div>
+  <div>
+    <img
+      src="data:image/jpeg;base64,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" />
+  </div>
+</ng-template>
+
+
+<app-selector [values]="names" [emptyTemplate]="myEmptyTemplate">
+  <ng-template let-item>
+    <div class="person-item">
+      <div>
+        (CONTENT CHILD) NAME : {{item.name}}
+      </div>
+      <div>
+        ID : {{item.id}}
+      </div>
+    </div>
+  </ng-template>
+</app-selector>
+
+<!-- 
+<expansion-panel>
+  <div header></div>
+  <ng-template let-isExpand>
+    Content of expansion panel - current status = {{isExpand}}
+  </ng-template>
+</expansion-panel> -->
+
+
+
+<!-- 
+<app-selector [values]="[1,2,3,4,5,6]" [emptyTemplate]="myEmptyTemplate">
+  <h3>
+    {{item}}
+  </h3>
+</app-selector> -->
+
+
+
+
+<!-- <h2>My App</h2>
 
 <h2>My App 2</h2>
 
 <ng-template #mainTemplate>
   <h1>Div Content</h1>
   <app-selector [values]="names" [displayFunction]="displayFn"></app-selector>
-</ng-template>
+</ng-template> -->
 
 <!-- let-number="$implicit" -->
-<ng-template #evenTemplate let-number let-even="isEven" let-isFirst="first">
+<!-- <ng-template #evenTemplate let-number let-even="isEven" let-isFirst="first">
   <div style="background-color: yellow;">
     IS first = {{isFirst}} <br>
     Is Event = {{even}}<br>
@@ -26,15 +78,17 @@
 
   </ng-container>
 
-</div>
+</div> -->
+
+
 
 
 <!-- <div [ngTemplateOutlet]="mainTemplate">
 
   </div> -->
-user
+<!-- user
 employee
-admin
+admin -->
 
 <!-- <mig-table [emptyTemplate]="mainTemplate">
 
@@ -109,3 +163,7 @@ admin
 
   </tbody>
 </table> -->
+
+<ng-template [appUnless]="isShown">
+  <div>appUnless Content</div>
+</ng-template>

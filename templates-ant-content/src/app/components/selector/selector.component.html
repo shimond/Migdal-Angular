@@ -1,8 +1,12 @@
-<div>
-    <div 
-    class="item" *ngFor="let item of values"
-    (click)="onSelectItem(item)"
-    >
-        {{displayFunction(item)}}
-    </div>
+<div *ngIf="values?.length else emptyTemplate">
+    <ng-container *ngFor="let item of values" (click)="onSelectItem(item)" [ngTemplateOutlet]="itemTemplate || defaultTemplate"
+        [ngTemplateOutletContext]="{$implicit: item}">
+
+    </ng-container>
 </div>
+
+<ng-template #defaultTemplate let-item>
+ <div class="item">
+    {{item}}
+ </div>
+</ng-template>

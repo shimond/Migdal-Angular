@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isShown = false;
   title = 'templates-and-content';
   names: Array<{ name: string, id: number }> = [{ name: 'Shimon', id: 1 },
   { name: 'Naama', id: 2 },
@@ -20,6 +21,10 @@ export class AppComponent {
 
   displayFn(item: { name: string, id: number }): string {
     return `ID = ${item.id} NAME = ${item.name}`;
+  }
+
+  showHideTemplate() {
+    this.isShown = !this.isShown;
   }
 }
 
