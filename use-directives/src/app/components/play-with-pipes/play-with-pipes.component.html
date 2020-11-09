@@ -1,0 +1,10 @@
+<h1>{{'Movies'  | suffix:'@'}}</h1>
+
+<input #txtSearch placeholder="Search movie" (input)="searchWord = txtSearch.value">
+<button (click)="changeMovieName()">Change movie name</button>
+<div>
+    <div *ngFor="let item of movies | filterArray: searchWord">
+        {{item.title}} - {{item.year | suffix:'*': 4}}
+    </div>
+
+</div>

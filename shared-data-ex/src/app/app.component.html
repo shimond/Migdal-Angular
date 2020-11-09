@@ -1,0 +1,14 @@
+<h1>My Web App ({{count$ | async}})</h1>
+
+<div>
+  <app-counter></app-counter>
+</div>
+
+<div>
+  <app-counter></app-counter>
+</div>
+
+<button (click)="displayMore = !displayMore">Show/Hide More</button>
+<div *ngIf="displayMore">
+  <app-counter></app-counter>
+</div>
