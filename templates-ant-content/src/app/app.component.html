@@ -1,0 +1,111 @@
+<h2>My App</h2>
+
+<h2>My App 2</h2>
+
+<ng-template #mainTemplate>
+  <h1>Div Content</h1>
+  <app-selector [values]="names" [displayFunction]="displayFn"></app-selector>
+</ng-template>
+
+<!-- let-number="$implicit" -->
+<ng-template #evenTemplate let-number let-even="isEven" let-isFirst="first">
+  <div style="background-color: yellow;">
+    IS first = {{isFirst}} <br>
+    Is Event = {{even}}<br>
+    <h1>{{number}} EVEN </h1>
+  </div>
+</ng-template>
+<ng-template #oddTemplate let-number let-isFirst="first">
+  <h1 style="background-color: red;">{{number}} ODD IS FIRST = {{isFirst}}</h1>
+</ng-template>
+
+
+<div *ngFor="let item of [1,2,3,4,5,6,7,8,9];let ngForFirst=first">
+  <ng-container [ngTemplateOutlet]="item % 2 == 0? evenTemplate : oddTemplate"
+    [ngTemplateOutletContext]="{$implicit: item, isEven: item % 2 === 0, first:ngForFirst}">
+
+  </ng-container>
+
+</div>
+
+
+<!-- <div [ngTemplateOutlet]="mainTemplate">
+
+  </div> -->
+user
+employee
+admin
+
+<!-- <mig-table [emptyTemplate]="mainTemplate">
+
+</mig-table> -->
+
+
+
+<!-- <div *ngIf="names.length > 5 else lt5Template">
+  Names.length &gt;5 
+</div> -->
+<!-- 
+<ng-template [ngIf]="names.length > 5" [ngIfElse]="lt5Template">
+  <div>
+    Names.length > 5
+  </div>
+</ng-template>
+
+<ng-template #lt5Template>
+  Names.length &lt;5
+</ng-template>
+
+
+<div *ngFor="let item of names;let index=index;let f=first">
+  {{index}} {{item.name}} - first ? {{f}}
+</div>
+<hr>
+
+<ng-template ngFor [ngForOf]="names" let-item="$implicit" let-index="index" let-first="first">
+  <div>
+    {{index}} {{item.name}} - first ? {{first}}
+  </div>
+</ng-template> -->
+
+
+<!-- <ng-template>
+  <h2>{{item.id}} NAme is {{item.name}}</h2>
+</ng-template> -->
+
+<!-- <app-selector [values]="names" [displayFunction]="displayFn"></app-selector> -->
+
+<!-- <app-box>
+  <div content>
+    <p>
+    CONTENT!
+    </p>
+  </div>
+  <div head>My Header ({{names.length}})!</div>
+
+</app-box> -->
+
+<!-- <div style="display: none;">
+  <template>
+    <tr id="trUserTemplate">
+      <td class="userID"></td>
+      <td class="userEmail"></td>
+      <td class="userName"></td>
+    </tr>
+  </template>
+</div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>UserId</th>
+      <th>User Email</th>
+      <th>User Name</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table> -->

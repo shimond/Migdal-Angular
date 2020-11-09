@@ -1,0 +1,8 @@
+<div>
+    <div 
+    class="item" *ngFor="let item of values"
+    (click)="onSelectItem(item)"
+    >
+        {{displayFunction(item)}}
+    </div>
+</div>

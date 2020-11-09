@@ -1,0 +1,25 @@
+<div class="box-wrapper">
+    <div>
+        <h3>
+            <ng-content  select="[head]"></ng-content>
+        </h3>
+    </div>
+    <hr>
+    <div>
+        <!-- select = CSS3 selector -->
+      <div *ngFor="let item of [1,2,3]">
+        <ng-content select="[content]"></ng-content>
+      </div>
+    </div>
+</div>
+
+<!-- 
+<tabs [selectedTabIndex]="2">
+    <tab></tab>
+    <tab></tab>
+    <tab></tab>
+    <tab></tab>
+</tabs> -->
+
+
+    

@@ -1,0 +1,9 @@
+.item{
+    padding: 20px;
+    border:1px solid black;
+    margin: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: cadetblue;
+    }
+}
