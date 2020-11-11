@@ -1,0 +1,15 @@
+.wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+
+    .show {
+        width: 100%;
+        padding: 20px;
+        height: 400px;
+        color: wheat;
+        .summary{
+            font-size: 10pt;
+        }
+    }
+}

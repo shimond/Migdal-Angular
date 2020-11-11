@@ -1,4 +1,65 @@
-<ng-template [appUnless]="isShown">
+<div *ngIf="false">
+  SHIMON
+</div>
+<app-expansion-panel>
+  <div header>
+    <h2>Header from app component1</h2>
+  </div>
+  <ng-template let-isOpen>
+    <h2> is expand = {{isOpen}}</h2>
+    <img src="https://rxjs.dev/assets/images/logos/logo.png">
+  </ng-template>
+</app-expansion-panel>
+
+<button (click)="myPanel.changeMode()">OPEN CLOSE EXPANSION</button>
+<app-expansion-panel #myPanel>
+  <div header>
+    <h2>Header 2 </h2>
+    <img class="small-img" src="https://rxjs.dev/assets/images/logos/logo.png">
+  </div>
+  <ng-template let-isExpand>
+    <h2> is expand = {{isExpand}}</h2>
+    Content of expansion panel - from app component<br>
+    Content of expansion panel - from app component<br>
+    Content of expansion panel - from app component<br>
+    <img src="https://rxjs.dev/assets/images/logos/logo.png">
+  </ng-template>
+</app-expansion-panel>
+
+
+
+<div *appCurrentItemDisplay="let item inside names delay 5000" >
+  <div class="item-display" >
+    <h1>WITH *</h1>
+    {{item.name}}
+  </div>
+</div>
+<hr>
+<button (click)="refToCurrentDirective.stop()"> Stop it!</button>
+
+
+<ng-template appCurrentItemDisplay let-item [appCurrentItemDisplayInside]="names" [appCurrentItemDisplayDelay]="1000"
+#refToCurrentDirective="appCurrentItemDisplay">
+  <div class="item-display">
+    <h1>WITH NG TEMPLATE</h1>
+    {{item.name}}
+  </div>
+</ng-template>
+
+
+<ng-template ngFor let-currentItem [ngForOf]="names" let-index="index" let-first="first">
+  <div>
+    ({{index}}) {{currentItem.name}} - first ? {{first}}
+  </div>
+</ng-template>
+<hr>
+<div *ngFor="let currentItem of names;index as index;let first=first">
+  <div>
+    ({{index}}) {{currentItem.name}} - first ? {{first}}
+  </div>
+</div>
+
+<!-- <ng-template [appUnless]="isShown">
   <div>appUnless Content</div>
 </ng-template>
 
@@ -28,7 +89,7 @@
       </div>
     </div>
   </ng-template>
-</app-selector>
+</app-selector> -->
 
 <!-- 
 <expansion-panel>

@@ -1,12 +1,25 @@
-.w250{
-    width:250px;
+.w250 {
+    width: 250px;
 }
-.person-item{
+
+.person-item {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     align-items: center;
     border-radius: 10px;
     border: 1px solid red;
-    margin:20px
+    margin: 20px
+}
+
+.small {
+    width: 28px;
+}
+
+.item-display {
+    width: 200px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border: 2px solid red;
 }

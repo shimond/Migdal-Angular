@@ -1,0 +1,24 @@
+
+<h1>BEST SHOWS</h1>
+<div class="wrapper">
+    <div class="show" *ngFor="let item of bestShows$ | async"
+        [ngStyle]="{'background-image': 'url(' + item.image.original + ')'}">
+        <h2> {{item.name}}</h2>
+        <div>({{item.rating.average}})</div>
+
+        <div class="summary" [innerHTML]="item.summary"></div>
+    </div>
+</div>
+
+<h1>UGLY SHOWS</h1>
+
+
+<div class="wrapper">
+    <div class="show" *ngFor="let item of uglyShows$ | async"
+        [ngStyle]="{'background-image': 'url(' + item.image.original + ')'}">
+        <h2> {{item.name}}</h2>
+        <div>({{item.rating.average}})</div>
+
+        <div class="summary" [innerHTML]="item.summary"></div>
+    </div>
+</div>

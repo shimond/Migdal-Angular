@@ -1,0 +1,20 @@
+<div>
+    <div class="header">
+        <div>
+            <button (click)="changeMode()">
+                {{isExpand ? '-' : '+'}}
+            </button>
+        </div>
+        <div>
+            <ng-content selected="[header]"></ng-content>
+        </div>
+        <hr>
+    </div>
+    <div *ngIf="isExpand" class="body">
+        <ng-container [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{$implicit:isExpand}">
+
+        </ng-container>
+
+
+    </div>
+</div>
