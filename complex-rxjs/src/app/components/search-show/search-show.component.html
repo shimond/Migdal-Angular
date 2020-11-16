@@ -1,0 +1,11 @@
+<input placeholder="Search Show" [formControl]="searchShowControl">
+
+<div class="wrapper">
+    <div class="show" *ngFor="let item of shows$ | async"
+        [ngStyle]="{'background-image': 'url(' + item.show.image?.original + ')'}">
+        <h2> {{item.show.name}}</h2>
+        <div>({{item.show.rating.average}})</div>
+
+        <div class="summary" [innerHTML]="item.show.summary"></div>
+    </div>
+</div>

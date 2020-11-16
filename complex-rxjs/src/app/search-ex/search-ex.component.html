@@ -1,0 +1,9 @@
+<input [formControl]="searchControl" /> 
+<button [class.current-lang]="'FR' === (currentLang$ | async)" (click)="changeLanguage('FR')">FR</button>
+<button [class.current-lang]="'HE' === (currentLang$ | async)"  (click)="changeLanguage('HE')">HE</button>
+<button [class.current-lang]="'EN' === (currentLang$ | async)" (click)="changeLanguage('EN')">EN</button>
+<div>
+    <div *ngFor="let item of result">
+        {{item}}
+    </div>
+</div>
