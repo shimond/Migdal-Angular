@@ -1,0 +1,49 @@
+<form [formGroup]="personForm">
+  <h1>Add Parent - {{personForm.controls.fullName.value}}</h1>
+  <div>
+    <input formControlName="firstName" placeholder="firstName" appAutoReadOnlyOnBlur>
+  </div>
+  <div>
+    <input formControlName="lastName" placeholder="lastName" [readOnly]="isLastNameReadOnly">
+  </div>
+  <div>
+    <input formControlName="email" type="email" placeholder="email">
+  </div>
+
+  <app-address fieldName="homeAddress"></app-address>
+  <app-address fieldName="workAddress"></app-address>
+
+
+  <div>
+    Children:
+    <button (click)="addChild()" type="button">+</button>
+
+    <div>
+      <div *ngFor="let childForm of children.controls; let index= index" [formGroup]="childForm">
+        <div style="padding: 20px;">
+          <h2>Child NO {{index}}</h2>
+          <app-child></app-child>
+          <button type="button" (click)="removeChild(childForm)">-</button>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div>
+    <button [disabled]="personForm.invalid">Save</button>
+  </div>
+
+</form>
+
+<div>
+  <h2>Raw Value</h2>
+  <pre>{{personForm.getRawValue() | json}}</pre>
+</div>
+
+<div>
+  <h2>Value</h2>
+  <pre>{{personForm.value | json}}</pre>
+</div>

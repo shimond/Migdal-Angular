@@ -1,0 +1,10 @@
+<div [formGroup]="addressForm">
+  <h3>{{fieldName}}</h3>
+  <div>
+    <input formControlName="city" placeholder="City">
+    <div>{{addressForm.controls.city.errors | json}}</div>
+  </div>
+  <div>
+    <input formControlName="country" placeholder="Country">
+  </div>
+</div>
