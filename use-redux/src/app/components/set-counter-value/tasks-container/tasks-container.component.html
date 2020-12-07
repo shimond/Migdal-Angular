@@ -1,0 +1,25 @@
+<div>
+  <h1>Current Task:</h1>
+  <pre>{{selectedTask$ | async | json}}</pre>
+</div>
+
+
+
+<div [formGroup]="formGroup">
+  <div>
+    <input placeholder="title" formControlName="title">
+  </div>
+  <div>
+    <input placeholder="text" formControlName="text">
+  </div>
+  <div>
+    isDone:
+    <input type="checkbox" placeholder="isDone" formControlName="isDone">
+  </div>
+  <div>
+    <button (click)="save()">ADD</button>
+  </div>
+</div>
+
+
+<app-task-list></app-task-list>

@@ -1,0 +1,14 @@
+<table>
+  <tbody>
+    <tr *ngFor="let item of tasks$ | async">
+      <td>{{item.title}}</td>
+      <td>{{item.text}}</td>
+      <td>
+        <input type="checkbox" readonly [checked]="item.isDone" />
+      </td>
+      <td><button (click)="removeTask(item)">Remove</button></td>
+      <td><button (click)="selectTask(item)">Select</button></td>
+
+    </tr>
+  </tbody>
+</table>
