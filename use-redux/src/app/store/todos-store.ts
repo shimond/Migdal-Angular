@@ -37,8 +37,12 @@ export const todosReducer = createReducer(todosInit,
     const newState = { ...currentState, isLoading: action.isLoading };
     return newState;
   }),
+  on(loadTasksAction, (currentState, action) => {
+    const newState = { ...currentState, isLoading: true };
+    return newState;
+  }),
   on(setTasksAction, (currentState, action) => {
-    const newState = { ...currentState, tasks: [...action.allTasks] };
+    const newState = { ...currentState, tasks: [...action.allTasks], isLoading: false };
     return newState;
   }),
   on(setCurrentTaskAction, (currentState, action) => {

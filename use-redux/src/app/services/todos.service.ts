@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { ToDoTask } from '../models/task.model';
 import { setIsLoadingAction, setTasksAction, Todos } from '../store/todos-store';
 
@@ -17,9 +19,7 @@ export class TodosService {
     }));
   }
 
-  async loadAllTasks(): Promise<any> {
-    this.store.dispatch(setIsLoadingAction({ isLoading: true }));
-    await this.delay(4000);
+  loadAllTasks(): Observable<ToDoTask[]> {
     const tasksFromServer: ToDoTask[] = [
       { id: 1, title: 'task 1', text: 'text1', isDone: false },
       { id: 2, title: 'task 2', text: 'text2', isDone: false },
@@ -28,9 +28,8 @@ export class TodosService {
       { id: 5, title: 'task 5', text: 'text5', isDone: true },
       { id: 6, title: 'task 6', text: 'text6', isDone: false }
     ];
-    this.store.dispatch(setIsLoadingAction({ isLoading: false }));
-    this.store.dispatch(setTasksAction({ allTasks: tasksFromServer }));
-    return Promise.resolve();
+
+    return of(tasksFromServer).pipe(delay(2000));
   }
 
   constructor(private store: Store<any>) { }

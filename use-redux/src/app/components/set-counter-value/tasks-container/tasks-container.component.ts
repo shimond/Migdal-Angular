@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ToDoTask } from 'src/app/models/task.model';
-import { addTaskAction, selectCurrentTask } from 'src/app/store/todos-store';
+import { addTaskAction, loadTasksAction, selectCurrentTask } from 'src/app/store/todos-store';
 import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
@@ -16,10 +16,10 @@ export class TasksContainerComponent implements OnInit {
   formGroup: FormGroup;
   selectedTask$: Observable<ToDoTask>;
 
-  constructor(private formBuilder: FormBuilder, private store: Store<any>, private todosService: TodosService) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<any>) { }
 
   ngOnInit(): void {
-    this.todosService.loadAllTasks();
+    this.store.dispatch(loadTasksAction());
     this.selectedTask$ = this.store.select(selectCurrentTask);
     this.formGroup = this.formBuilder.group({
       title: [''],
